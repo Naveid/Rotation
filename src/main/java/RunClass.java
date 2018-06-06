@@ -1,7 +1,3 @@
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class RunClass {
@@ -32,10 +28,14 @@ public class RunClass {
         System.out.println(EmployeePerProjectSort.size());
     for(String role: roles) {
     System.out.println("Alligning "+ role);
-        locationCountRotation=rotation.LocationProjects(listProjectDetails, EmployeePerProjectSort, role, DesignationSort, employeeDetailsList);
+        locationCountRotation=rotation.checkLocationWise(listProjectDetails, EmployeePerProjectSort, role, DesignationSort, employeeDetailsList);
         System.out.println(locationCountRotation);
-        rotation.checkteamwise(listProjectDetails,EmployeePerProjectSort,role,DesignationSort,employeeDetailsList,locationCountRotation);
-       // rotation.rotateFree(employeeDetailsList);
+        rotation.checkTeamWise(listProjectDetails,EmployeePerProjectSort,role,DesignationSort,employeeDetailsList,locationCountRotation);
+        rotation.rotateFree(employeeDetailsList);
+
+        Assignment assignment= new Assignment();
+        rotation.abc();
+        assignment.assignPerLocation(listProjectDetails,EmployeePerProjectSort,role,DesignationSort,employeeDetailsList,locationCountRotation);
         //rotation.rotateTwoMonths(employeeDetailsList,listProjectDetails);
     }
 
